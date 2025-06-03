@@ -49,21 +49,21 @@ namespace IdentityServer.Configuration
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile()
             };
-        public static List<TestUser> TestUser =>
-            new List<TestUser>{
-                new TestUser
-                {
-                    SubjectId = "1144",
-                    Username = "mukesh",
-                    Password = "mukesh",
-                    Claims =
-                    {
-                        new Claim(JwtClaimTypes.Name, "Mukesh Murugan"),
-                        new Claim(JwtClaimTypes.GivenName, "Mukesh"),
-                        new Claim(JwtClaimTypes.FamilyName, "Murugan"),
-                        new Claim(JwtClaimTypes.WebSite, "http://codewithmukesh.com"),
-                    }
-                }
-            };
+        //public static List<TestUser> TestUser =>
+        //    new List<TestUser>{
+        //        new TestUser
+        //        {
+        //            SubjectId = "1144",
+        //            Username = "mukesh",
+        //            Password = "mukesh",
+        //            Claims =
+        //            {
+        //                new Claim(JwtClaimTypes.Name, "Mukesh Murugan"),
+        //                new Claim(JwtClaimTypes.GivenName, "Mukesh"),
+        //                new Claim(JwtClaimTypes.FamilyName, "Murugan"),
+        //                new Claim(JwtClaimTypes.WebSite, "http://codewithmukesh.com"),
+        //            }
+        //        }
+        //    };
     }
 }
