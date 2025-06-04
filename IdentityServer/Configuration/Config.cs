@@ -10,7 +10,11 @@ namespace IdentityServer.Configuration
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("CustomMiddleWare.write"),
+                new ApiScope("CustomMiddleWare.write")
+                {
+                    //Scopes = { "CustomMiddleWare.write" },
+                    UserClaims = { "userdata" }
+                },
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
@@ -19,7 +23,8 @@ namespace IdentityServer.Configuration
                 new ApiResource("CustomMiddleWare")
                 {
                     Scopes = new List<string> { "CustomMiddleWare.write" },
-                    ApiSecrets = new List<Secret>{new Secret("supersecret".Sha256()) }
+                    ApiSecrets = new List<Secret>{new Secret("supersecret".Sha256()) },
+                    UserClaims = { "userdata" }
                 }
             };
 
@@ -29,9 +34,10 @@ namespace IdentityServer.Configuration
                 {
                     ClientId = "mvc",
                     ClientName = "MVC Demo",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
                     ClientSecrets = { new Secret("secret".Sha256()) },
                     AllowedScopes = { "CustomMiddleWare.write" },
+                    AccessTokenType = AccessTokenType.Jwt,
                     IdentityTokenLifetime = 50,
                     AccessTokenLifetime = 28800, // 120 minute
                     AllowOfflineAccess = true,

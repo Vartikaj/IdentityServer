@@ -1,4 +1,5 @@
 using Duende.IdentityServer.Test;
+using IdentityServer;
 using IdentityServer.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,8 +16,10 @@ builder.Services.AddIdentityServer()
     .AddInMemoryIdentityResources(Config.IdentityResources) // Registers identity resources for OpenID Connect.
     .AddInMemoryApiResources(Config.ApiResources) // Registers API resources – these are APIs protected by IdentityServer that clients can access using access tokens.
     .AddInMemoryApiScopes(Config.ApiScopes)
-    .AddTestUsers(Config.TestUser)
-    .AddDeveloperSigningCredential(); // Adds a temporary signing key used by IdentityServer to sign tokens (JWTs, etc.).
+    //.AddTestUsers(Config.TestUser)
+    .AddDeveloperSigningCredential()// Adds a temporary signing key used by IdentityServer to sign tokens (JWTs, etc.).
+    .AddResourceOwnerValidator<CustomResourceOwnerPasswordValidator>()
+    .AddProfileService<ProfileService>(); 
 
 
 var app = builder.Build();
