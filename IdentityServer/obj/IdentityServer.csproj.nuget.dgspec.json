@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[7.2.3, )"
             },
+            "StoveTech.Duende.IdentityServer.Contrib.RedisStore": {
+              "target": "Package",
+              "version": "[6.3.5.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"

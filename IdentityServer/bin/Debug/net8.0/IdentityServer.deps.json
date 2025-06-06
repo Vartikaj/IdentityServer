@@ -10,6 +10,7 @@
         "dependencies": {
           "3Chum.IdentityServer4.AccessTokenValidation": "8.0.0",
           "Duende.IdentityServer": "7.2.3",
+          "StoveTech.Duende.IdentityServer.Contrib.RedisStore": "6.3.5.1",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -184,6 +185,41 @@
           }
         }
       },
+      "Pipelines.Sockets.Unofficial/2.2.8": {
+        "dependencies": {
+          "System.IO.Pipelines": "5.0.1"
+        },
+        "runtime": {
+          "lib/net5.0/Pipelines.Sockets.Unofficial.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.2.8.1080"
+          }
+        }
+      },
+      "StackExchange.Redis/2.6.122": {
+        "dependencies": {
+          "Pipelines.Sockets.Unofficial": "2.2.8"
+        },
+        "runtime": {
+          "lib/net6.0/StackExchange.Redis.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.6.122.38350"
+          }
+        }
+      },
+      "StoveTech.Duende.IdentityServer.Contrib.RedisStore/6.3.5.1": {
+        "dependencies": {
+          "Duende.IdentityServer": "7.2.3",
+          "Duende.IdentityServer.Storage": "7.2.3",
+          "StackExchange.Redis": "2.6.122"
+        },
+        "runtime": {
+          "lib/net7.0/StoveTech.Duende.IdentityServer.Contrib.RedisStore.dll": {
+            "assemblyVersion": "6.3.5.1",
+            "fileVersion": "6.3.5.1"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -233,7 +269,8 @@
             "fileVersion": "7.1.2.41121"
           }
         }
-      }
+      },
+      "System.IO.Pipelines/5.0.1": {}
     }
   },
   "libraries": {
@@ -361,6 +398,27 @@
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
     },
+    "Pipelines.Sockets.Unofficial/2.2.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zG2FApP5zxSx6OcdJQLbZDk2AVlN2BNQD6MorwIfV6gVj0RRxWPEp2LXAxqDGZqeNV1Zp0BNPcNaey/GXmTdvQ==",
+      "path": "pipelines.sockets.unofficial/2.2.8",
+      "hashPath": "pipelines.sockets.unofficial.2.2.8.nupkg.sha512"
+    },
+    "StackExchange.Redis/2.6.122": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wp7mvGpFXaevfZ07/SDeh/6YHUJEgwJIGyjbDWKBYbPwKMJQYFz9zFEmBptqtVzqvSgft5nlewwutoaMaG0LPA==",
+      "path": "stackexchange.redis/2.6.122",
+      "hashPath": "stackexchange.redis.2.6.122.nupkg.sha512"
+    },
+    "StoveTech.Duende.IdentityServer.Contrib.RedisStore/6.3.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w+PXdmzDsEz9mvgZkwxUleQTcPfZuahUIec0kna+vtcqIfF3mw/0TbjRCPr4DpwfI82EKs1thbp2/tI44K/59A==",
+      "path": "stovetech.duende.identityserver.contrib.redisstore/6.3.5.1",
+      "hashPath": "stovetech.duende.identityserver.contrib.redisstore.6.3.5.1.nupkg.sha512"
+    },
     "Swashbuckle.AspNetCore/6.4.0": {
       "type": "package",
       "serviceable": true,
@@ -395,6 +453,13 @@
       "sha512": "sha512-Thhbe1peAmtSBFaV/ohtykXiZSOkx59Da44hvtWfIMFofDA3M3LaVyjstACf2rKGn4dEDR2cUpRAZ0Xs/zB+7Q==",
       "path": "system.identitymodel.tokens.jwt/7.1.2",
       "hashPath": "system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
+    },
+    "System.IO.Pipelines/5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
+      "path": "system.io.pipelines/5.0.1",
+      "hashPath": "system.io.pipelines.5.0.1.nupkg.sha512"
     }
   }
 }

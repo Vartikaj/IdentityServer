@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IMXP6WuRwZu2LWrWpprs8gLyL6TN0FG9t13kCTne/lunY7gPrMqSGDUORAodFXXikFRBuL6l5ypIw2H9NKL3IQ==",
+  "dgSpecHash": "bEAvZcwO2LCIz0vgGMgyLqWQQXXBttQolaD3JGd3n5fcfyXyrOvDx463kHi4Schweu0LkFOD7MWbmkfRwcC2YQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hied\\Desktop\\ProjectDevelopment\\GRPC\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
   "expectedPackageFiles": [
@@ -21,11 +21,15 @@
     "C:\\Users\\Hied\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.1.2\\microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512",
     "C:\\Users\\Hied\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.1.2\\microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
     "C:\\Users\\Hied\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Hied\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\Hied\\.nuget\\packages\\stackexchange.redis\\2.6.122\\stackexchange.redis.2.6.122.nupkg.sha512",
+    "C:\\Users\\Hied\\.nuget\\packages\\stovetech.duende.identityserver.contrib.redisstore\\6.3.5.1\\stovetech.duende.identityserver.contrib.redisstore.6.3.5.1.nupkg.sha512",
     "C:\\Users\\Hied\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\Hied\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\Hied\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
     "C:\\Users\\Hied\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
-    "C:\\Users\\Hied\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.1.2\\system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
+    "C:\\Users\\Hied\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.1.2\\system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512",
+    "C:\\Users\\Hied\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
   ],
   "logs": []
 }

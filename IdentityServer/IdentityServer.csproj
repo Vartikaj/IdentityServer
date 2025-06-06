@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="3Chum.IdentityServer4.AccessTokenValidation" Version="8.0.0" />
     <PackageReference Include="Duende.IdentityServer" Version="7.2.3" />
+    <PackageReference Include="StoveTech.Duende.IdentityServer.Contrib.RedisStore" Version="6.3.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 

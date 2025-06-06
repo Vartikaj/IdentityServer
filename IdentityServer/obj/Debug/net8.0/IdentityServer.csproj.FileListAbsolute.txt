@@ -1,5 +1,6 @@
 C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\appsettings.json
+C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\keys\is-signing-key-6BA85E8471620ACDB55039B8F3D4772B.json
 C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\IdentityServer.exe
 C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\IdentityServer.deps.json
 C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\IdentityServer.runtimeconfig.json
@@ -47,4 +48,6 @@ C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\obj\
 C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\obj\Debug\net8.0\IdentityServer.pdb
 C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\obj\Debug\net8.0\IdentityServer.genruntimeconfig.cache
 C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\obj\Debug\net8.0\ref\IdentityServer.dll
-C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\keys\is-signing-key-6BA85E8471620ACDB55039B8F3D4772B.json
+C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Users\Hied\Desktop\ProjectDevelopment\GRPC\IdentityServer\IdentityServer\bin\Debug\net8.0\StoveTech.Duende.IdentityServer.Contrib.RedisStore.dll
