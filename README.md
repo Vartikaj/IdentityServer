@@ -24,8 +24,9 @@ Identity server in c#
   </li>
 </ol>
 
-✅ What Does "Token Issuance" Mean?
-Token issuance refers to the process where IdentityServer generates tokens after a successful authentication or authorization request from a client (like a web or mobile app).
+<h2>✅ What Does "Token Issuance" Mean?</h2>
+
+<p>Token issuance refers to the process where IdentityServer generates tokens after a successful authentication or authorization request from a client (like a web or mobile app).</p>
 
 There are mainly two types of tokens issued:
 🔑 1. Access Token (OAuth 2.0) : (Basically used to API call)
