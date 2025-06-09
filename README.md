@@ -25,16 +25,25 @@ Identity server in c#
 </ol>
 
 <h2>✅ What Does "Token Issuance" Mean?</h2>
-
 <p>Token issuance refers to the process where IdentityServer generates tokens after a successful authentication or authorization request from a client (like a web or mobile app).</p>
 
-There are mainly two types of tokens issued:
-🔑 1. Access Token (OAuth 2.0) : (Basically used to API call)
-This token grants access to protected APIs (also called resource servers).
-It’s usually a JWT or reference token.
-Clients send this token in the Authorization header when making API calls.
+<h3>There are mainly two types of tokens issued:</h3>
+<ol>
+  <li>
+    🔑 Access Token (OAuth 2.0) : (Basically used to API call)
+    <ul>
+      <li>This token grants access to protected APIs (also called resource servers).</li>
+      <li>It’s usually a JWT or reference token.</li>
+      <li>Clients send this token in the Authorization header when making API calls.</li>
+    </ul>
+  </li>
+  <li>🧠 OAuth 2.0 defines the rules and flows (like client credentials, password grant, etc.) under which these tokens are issued and validated.</li>
+</ol>
 
-🧠 OAuth 2.0 defines the rules and flows (like client credentials, password grant, etc.) under which these tokens are issued and validated.
+
+
+
+
 
 🆔 2. ID Token (OpenID Connect)
 ID token is a JWT specifically designed to carry identity information about the user (like name, email, etc.).
