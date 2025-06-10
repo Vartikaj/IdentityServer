@@ -218,6 +218,16 @@ Identity server in c#
     };
 </pre>
 
+<h3>IdentityResources</h3>
+<p>IdentityResources are directly related to what user information appears in the id_token (and optionally via the UserInfo endpoint). </p>
+<pre>
+  public static IEnumerable<IdentityResource> IdentityResources =>
+    new IdentityResource[]
+    {
+        new IdentityResources.OpenId(),    // gives you `sub`
+        new IdentityResources.Profile()    // gives you name, family_name, etc.
+    };
+</pre>
 <h3>✅ What it means:</h3>
 <p>This defines a client application (like an Angular app, MVC app, Postman, etc.)</p>
 <p>It tells IdentityServer:</p>
