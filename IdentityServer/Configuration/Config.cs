@@ -5,14 +5,18 @@ using System.Security.Claims;
 
 namespace IdentityServer.Configuration
 {
+
+    // In identity server 6 no need to add APIResources(not mandatory)
     public class Config
     {
+        // 	Define what actions/permissions a client can request on an API
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
                 new ApiScope("CustomMiddleWare.write")
             };
 
+        //	Define which APIs are protected and what scopes apply to them
         public static IEnumerable<ApiResource> ApiResources =>
             new ApiResource[]
             {
@@ -23,6 +27,7 @@ namespace IdentityServer.Configuration
                 }
             };
 
+        // Define who can ask for tokens, which grant types and scopes they're allowed
         public static IEnumerable<Client> Clients =>
             new Client[] {
                 new Client
@@ -41,6 +46,7 @@ namespace IdentityServer.Configuration
                 }
             };
 
+        // IdentityResources are directly related to what user information appears in the id_token (and optionally via the UserInfo endpoint). 
         public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[]
             {
