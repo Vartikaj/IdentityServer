@@ -349,3 +349,33 @@ public static IEnumerable&lt;Client&gt; Clients =&gt; new[]
 };</code></pre>
 
 <p>📌 This allows the client to request a token to access <code>"api.read"</code> permission, without linking to a specific <strong>ApiResource</strong>.</p>
+
+<h3>✅ 2. Full Working IdentityServer Setup (With All 3: Client, ApiScope, ApiResource)</h3>
+<p>This is the recommended approach for more complex, secure, and multi-API setups.</p>
+
+<h4>🔧 Config.cs</h4>
+<pre><code>public static IEnumerable&lt;ApiScope&gt; ApiScopes =&gt; new[]
+{
+    new ApiScope("api.read"),
+    new ApiScope("api.write")
+};
+
+public static IEnumerable&lt;ApiResource&gt; ApiResources =&gt; new[]
+{
+    new ApiResource("my_api")
+    {
+        Scopes = { "api.read", "api.write" },
+        ApiSecrets = { new Secret("supersecret".Sha256()) }
+    }
+};
+
+public static IEnumerable&lt;Client&gt; Clients =&gt; new[]
+{
+    new Client
+    {
+        ClientId = "robust_client",
+        AllowedGrantTypes = GrantTypes.ClientCredentials,
+        ClientSecrets = { new Secret("secret".Sha256()) },
+        AllowedScopes = { "api.read", "api.write" }
+    }
+};</code></pre>
