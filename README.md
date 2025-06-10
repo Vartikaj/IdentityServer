@@ -137,3 +137,25 @@ Identity server in c#
 
 ![image](https://github.com/user-attachments/assets/8ebcc38d-e0ec-4a86-861d-8e668020ba0d)
 
+<h3>✅ Here's the Flow: IdentityServer Token Sharing Explained</h3>
+[User] 
+   |
+   | 1. Login via IdentityServer
+   v
+[IdentityServer]
+   |
+   | 2. Redirects to Google/Microsoft (external provider)
+   v
+[Google / Microsoft / AzureAD]
+   |
+   | 3. User Authenticates → Sends external id_token to IdentityServer
+   v
+[IdentityServer]
+   |
+   | 4. Validates external id_token → creates local identity
+   |    (maps external claims to internal user claims)
+   |
+   | 5. Issues **its own access_token + id_token** to the frontend/client
+   v
+[Your Application / Angular / .NET]
+
