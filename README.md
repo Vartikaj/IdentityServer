@@ -136,7 +136,8 @@ Identity server in c#
 </ol>
 
 <h3>✅ Here's the Flow: IdentityServer Token Sharing Explained</h3>
-![image](https://github.com/user-attachments/assets/8ebcc38d-e0ec-4a86-861d-8e668020ba0d)
+![image](https://github.com/user-attachments/assets/3b8f0b97-a7fc-4890-9b28-268edea87603)
+
 
 <h3>✅ Conclusion</h3>
 <ol>
