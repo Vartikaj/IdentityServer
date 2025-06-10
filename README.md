@@ -135,9 +135,9 @@ Identity server in c#
   <li>Both tokens are commonly issued together, but not both are required for API calls.</li>
 </ol>
 
+<h3>✅ Here's the Flow: IdentityServer Token Sharing Explained</h3>
 ![image](https://github.com/user-attachments/assets/8ebcc38d-e0ec-4a86-861d-8e668020ba0d)
 
-<h3>✅ Here's the Flow: IdentityServer Token Sharing Explained</h3>
 <h3>✅ Conclusion</h3>
 <ol>
   <li>If your app just needs to call an API, only <code>access_token</code> is needed.</li>
@@ -160,3 +160,170 @@ Identity server in c#
 <div class="box"><strong>[Your Application / Angular / .NET]</strong></div>
 
 
+<h2>Identity Server in ASP.net core</h2>
+<h3>🔐 1. ApiScopes</h3>
+<pre>
+  public static IEnumerable<ApiScope> ApiScopes =>
+    new ApiScope[]
+    {
+        new ApiScope("CustomMiddleWare.write")
+    };
+</pre>
+
+<h4>✅ What it means:</h4>
+<ol>
+  <li>ApiScope defines specific permissions or access levels for an API.</li>
+  <li>Each scope represents an action or a group of permissions (e.g., read, write).</li>
+  <li>In my case:<br/>
+"CustomMiddleWare.write" means “this token allows the client to write to the CustomMiddleWare API.”</li>
+</ol>
+<h3>🔒 2. ApiResources</h3>
+<pre>
+  public static IEnumerable<ApiResource> ApiResources =>
+    new ApiResource[]
+    {
+        new ApiResource("CustomMiddleWare")
+        {
+            Scopes = new List<string> { "CustomMiddleWare.write" },
+            ApiSecrets = new List<Secret>{new Secret("supersecret".Sha256()) }
+        }
+    };
+</pre>
+<h4>✅ What it means:</h4>
+<ol>
+  <li>ApiResource represents an actual API you want to protect.</li>
+  <li>It defines:
+  <ol>
+    <li>The name of the API (CustomMiddleWare)</li>
+    <li>The scopes that apply to this API (CustomMiddleWare.write)</li>
+    <li>An optional API secret (used if the API wants to validate incoming tokens or use introspection)</li>
+    <li>Think of this as "registering your actual API" in IdentityServer.</li>
+  </ol></li>
+  <li>In my case:<br/>
+"CustomMiddleWare.write" means “this token allows the client to write to the CustomMiddleWare API.”</li>
+</ol>
+<h3>👤 3. Clients</h3>
+<pre>
+  public static IEnumerable<Client> Clients =>
+    new Client[] {
+        new Client
+        {
+            ClientId = "mvc",
+            AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
+            ClientSecrets = new [] { new Secret("secret".Sha512()) },
+            AllowedScopes = { "CustomMiddleWare.write", "offline_access" },
+            ...
+        }
+    };
+</pre>
+
+<h3>✅ What it means:</h3>
+<p>This defines a client application (like an Angular app, MVC app, Postman, etc.)</p>
+<p>It tells IdentityServer:</p>
+<ul>
+  <li>Who the client is (<code>ClientId = "mvc"</code>)</li>
+  <li>What grant types it can use:
+    <ul>
+      <li><code>ResourceOwnerPassword</code> = username/password login</li>
+      <li><code>ClientCredentials</code> = machine-to-machine token</li>
+    </ul>
+  </li>
+  <li>What API scopes it can request (<code>CustomMiddleWare.write</code>)</li>
+  <li>Whether it supports refresh tokens (<code>offline_access</code>)</li>
+  <li>How long the access/refresh tokens should last</li>
+</ul>
+<h3>🔄 Token Configuration Highlights:</h3>
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>AccessTokenLifetime = 300</code></td>
+      <td>Access token is valid for 5 minutes</td>
+    </tr>
+    <tr>
+      <td><code>AllowOfflineAccess = true</code></td>
+      <td>Allows issuing a refresh token</td>
+    </tr>
+    <tr>
+      <td><code>RefreshTokenUsage = OneTimeOnly</code></td>
+      <td>Each refresh token can be used only once</td>
+    </tr>
+    <tr>
+      <td><code>RefreshTokenExpiration = Sliding</code></td>
+      <td>Token expiration time extends with each use</td>
+    </tr>
+    <tr>
+      <td><code>SlidingRefreshTokenLifetime = 300</code></td>
+      <td>Sliding lifetime is 5 minutes</td>
+    </tr>
+    <tr>
+      <td><code>AbsoluteRefreshTokenLifetime = 600</code></td>
+      <td>Max lifetime of refresh token is 10 minutes</td>
+    </tr>
+  </tbody>
+</table>
+<h3>🚫 If You Don't Add Them: What Goes Wrong</h3>
+<ol>
+  <li>
+    <strong>❌ If you don't add ApiScopes</strong><br>
+    <strong>Error:</strong> Clients won’t be able to request any scopes.<br>
+    <strong>Result:</strong> Tokens will either:
+    <ul>
+      <li>Not be issued</li>
+      <li>Or will be missing the expected scopes</li>
+    </ul>
+    <strong>Impact:</strong> APIs will reject the token as unauthorized or invalid scope.
+  </li>
+
+  <li>
+    <strong>❌ If you don't add ApiResources</strong><br>
+    <strong>Error:</strong> The API is not recognized by IdentityServer as a valid resource.<br>
+    <strong>Result:</strong>
+    <ul>
+      <li>You can't protect your API properly</li>
+      <li>You lose the ability to associate scopes with specific APIs</li>
+    </ul>
+    <strong>Impact:</strong>
+    <ul>
+      <li>You might issue tokens without properly linking them to an API</li>
+      <li>Access control becomes unclear and insecure</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>❌ If you don't add Clients</strong><br>
+    <strong>Error:</strong> No application is authorized to request tokens<br>
+    <strong>Result:</strong> IdentityServer will reject all token requests with:<br>
+    <code>invalid_client</code><br>
+    <strong>Impact:</strong> No frontend or backend app can authenticate or access any protected resource.
+  </li>
+</ol>
+
+<h3>✅ Why These Are Required</h3>
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Clients</strong></td>
+      <td>Define who can ask for tokens, which grant types and scopes they're allowed</td>
+    </tr>
+    <tr>
+      <td><strong>ApiScopes</strong></td>
+      <td>Define what actions/permissions a client can request on an API</td>
+    </tr>
+    <tr>
+      <td><strong>ApiResources</strong></td>
+      <td>Define which APIs are protected and what scopes apply to them</td>
+    </tr>
+  </tbody>
+</table>
