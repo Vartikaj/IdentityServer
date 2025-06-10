@@ -138,24 +138,48 @@ Identity server in c#
 ![image](https://github.com/user-attachments/assets/8ebcc38d-e0ec-4a86-861d-8e668020ba0d)
 
 <h3>✅ Here's the Flow: IdentityServer Token Sharing Explained</h3>
-[User] 
-   |
-   | 1. Login via IdentityServer
-   v
-[IdentityServer]
-   |
-   | 2. Redirects to Google/Microsoft (external provider)
-   v
-[Google / Microsoft / AzureAD]
-   |
-   | 3. User Authenticates → Sends external id_token to IdentityServer
-   v
-[IdentityServer]
-   |
-   | 4. Validates external id_token → creates local identity
-   |    (maps external claims to internal user claims)
-   |
-   | 5. Issues **its own access_token + id_token** to the frontend/client
-   v
-[Your Application / Angular / .NET]
+<h3>✅ Conclusion</h3>
+<ol>
+  <li>If your app just needs to call an API, only <code>access_token</code> is needed.</li>
+  <li>If your app needs to know who is logged in, <code>id_token</code> is used.</li>
+  <li>Both tokens are commonly issued together, but not both are required for API calls.</li>
+</ol>
+Let me know if you want to wrap this into a styled box or card layout for better visual presentation.
+
+
+
+
+  <style>
+    .box {
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      margin: 10px auto;
+      width: 400px;
+      text-align: center;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+    }
+    .arrow {
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box"><strong>[User]</strong></div>
+<div class="arrow">|<br>| 1. Login via IdentityServer<br>v</div>
+
+<div class="box"><strong>[IdentityServer]</strong></div>
+<div class="arrow">|<br>| 2. Redirects to Google/Microsoft (external provider)<br>v</div>
+
+<div class="box"><strong>[Google / Microsoft / AzureAD]</strong></div>
+<div class="arrow">|<br>| 3. User Authenticates → Sends external <code>id_token</code> to IdentityServer<br>v</div>
+
+<div class="box"><strong>[IdentityServer]</strong></div>
+<div class="arrow">|<br>| 4. Validates external <code>id_token</code> → creates local identity<br>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(maps external claims to internal user claims)<br>|<br>| 5. Issues <strong>its own</strong> <code>access_token</code> + <code>id_token</code> to the frontend/client<br>v</div>
+
+<div class="box"><strong>[Your Application / Angular / .NET]</strong></div>
+
 
