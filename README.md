@@ -144,7 +144,7 @@ Identity server in c#
   <li>If your app needs to know who is logged in, <code>id_token</code> is used.</li>
   <li>Both tokens are commonly issued together, but not both are required for API calls.</li>
 </ol>
-
+<h2>✅ Here's the Flow: IdentityServer Token Sharing Explained</h2>
 <div class="box"><strong>[User]</strong></div>
 <div class="arrow">|<br>| 1. Login via IdentityServer<br>v</div>
 
