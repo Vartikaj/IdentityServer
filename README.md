@@ -327,3 +327,25 @@ Identity server in c#
     </tr>
   </tbody>
 </table>
+
+<h3>✅ 1. Minimal Working IdentityServer Setup (Without ApiResource)</h3>
+<p>This version works only with <strong>ApiScope</strong> and <strong>Client</strong>, which is valid in IdentityServer 6+ (Duende). Good for simple setups.</p>
+
+<h4>🔧 Config.cs</h4>
+<pre><code>public static IEnumerable&lt;ApiScope&gt; ApiScopes =&gt; new[]
+{
+    new ApiScope("api.read")
+};
+
+public static IEnumerable&lt;Client&gt; Clients =&gt; new[]
+{
+    new Client
+    {
+        ClientId = "simple_client",
+        AllowedGrantTypes = GrantTypes.ClientCredentials,
+        ClientSecrets = { new Secret("secret".Sha256()) },
+        AllowedScopes = { "api.read" }
+    }
+};</code></pre>
+
+<p>📌 This allows the client to request a token to access <code>"api.read"</code> permission, without linking to a specific <strong>ApiResource</strong>.</p>
