@@ -144,29 +144,6 @@ Identity server in c#
   <li>If your app needs to know who is logged in, <code>id_token</code> is used.</li>
   <li>Both tokens are commonly issued together, but not both are required for API calls.</li>
 </ol>
-Let me know if you want to wrap this into a styled box or card layout for better visual presentation.
-
-
-
-
-  <style>
-    .box {
-      border: 1px solid #ccc;
-      padding: 10px 20px;
-      margin: 10px auto;
-      width: 400px;
-      text-align: center;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-      font-family: Arial, sans-serif;
-    }
-    .arrow {
-      text-align: center;
-      font-size: 18px;
-    }
-  </style>
-</head>
-<body>
 
 <div class="box"><strong>[User]</strong></div>
 <div class="arrow">|<br>| 1. Login via IdentityServer<br>v</div>
