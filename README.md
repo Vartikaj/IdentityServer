@@ -379,3 +379,77 @@ public static IEnumerable&lt;Client&gt; Clients =&gt; new[]
         AllowedScopes = { "api.read", "api.write" }
     }
 };</code></pre>
+
+
+<h3>🔄 IdentityServer 4 vs IdentityServer 6</h3>
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Feature / Aspect</th>
+      <th>IdentityServer 4</th>
+      <th>IdentityServer 6 (Duende IdentityServer)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Platform Support</td>
+      <td>.NET Core 3.1 / .NET 5</td>
+      <td>.NET 6 and later (requires .NET 6+)</td>
+    </tr>
+    <tr>
+      <td>Maintainer</td>
+      <td>Free open-source by IdentityServer team</td>
+      <td>Commercial product by Duende Software</td>
+    </tr>
+    <tr>
+      <td>License</td>
+      <td>Free and Open Source (Apache 2.0)</td>
+      <td>Commercial License Required (non-free)</td>
+    </tr>
+    <tr>
+      <td>OIDC / OAuth2 Standards</td>
+      <td>Supported (stable, mature)</td>
+      <td>Supported with latest specifications</td>
+    </tr>
+    <tr>
+      <td>Maintenance & Support</td>
+      <td>No longer maintained (EOL in 2022)</td>
+      <td>Actively maintained with enterprise support</td>
+    </tr>
+    <tr>
+      <td>Security Updates</td>
+      <td>❌ No new fixes</td>
+      <td>✅ Regular patches and security fixes</td>
+    </tr>
+    <tr>
+      <td>Performance Enhancements</td>
+      <td>Older token generation and validation</td>
+      <td>Optimized for performance, including Redis support</td>
+    </tr>
+    <tr>
+      <td>Device Flow Support</td>
+      <td>Limited</td>
+      <td>Fully supported</td>
+    </tr>
+    <tr>
+      <td>JWT Enhancements</td>
+      <td>Basic</td>
+      <td>More flexible token customization & encryption</td>
+    </tr>
+    <tr>
+      <td>Extensibility (Events, Validators)</td>
+      <td>Moderate</td>
+      <td>Improved middleware extensibility</td>
+    </tr>
+    <tr>
+      <td>Built-in Redis Support</td>
+      <td>❌ No</td>
+      <td>✅ Yes (operational store, caching, etc.)</td>
+    </tr>
+    <tr>
+      <td>Best For</td>
+      <td>Legacy/self-hosted apps in dev/test environments</td>
+      <td>Production-grade, secure, and scalable applications</td>
+    </tr>
+  </tbody>
+</table>
