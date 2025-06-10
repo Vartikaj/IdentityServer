@@ -36,68 +36,104 @@ Identity server in c#
       <li>It’s usually a JWT or reference token.</li>
       <li>Clients send this token in the Authorization header when making API calls.</li>
     </ul>
+    <p>🧠 OAuth 2.0 defines the rules and flows (like client credentials, password grant, etc.) under which these tokens are issued and validated.</p>
   </li>
-  <li>🧠 OAuth 2.0 defines the rules and flows (like client credentials, password grant, etc.) under which these tokens are issued and validated.</li>
+
+  <li>
+    🆔 ID Token (OpenID Connect)
+    <ul>
+      <li>ID token is a JWT specifically designed to carry identity information about the user (like name, email, etc.).</li>
+      <li>It is not used to access APIs, but rather to prove the user's identity to the client (such as in a login flow).</li>
+    </ul>
+    <p>🧠 OpenID Connect (OIDC) is a protocol built on top of OAuth 2.0 that introduces id_token and defines how authentication works.</p>
+  </li>
+</ol>
+
+<h3>✅ Example Flow (Authorization Code + PKCE):</h3>
+<ol>
+  <li>User logs in from your frontend app.</li>
+  <li>IdentityServer authenticates the user.</li>
+  <li>IdentityServer returns:
+    <ol>
+      <li>id_token to the frontend (user identity)</li>
+      <li>access_token for calling APIs</li>
+      <li>The frontend stores the tokens securely and uses them appropriately.</li>
+    </ol>
+  </li>
 </ol>
 
 
+<h3>OpenID Connect (OIDC)</h3>
+<p>OpenID Connect (OIDC) is a protocol built on top of OAuth 2.0 that introduces id_token and defines how authentication works.</p>
 
+<ol>
+  <li>
+    <strong>✅ OAuth 2.0: Authorization Only</strong><br>
+    OAuth 2.0 is a delegated authorization protocol. It allows applications (clients) to access resources on behalf of a user.<br><br>
+    However, it does <strong>not</strong> provide any way to:
+    <ul>
+      <li>Authenticate the user</li>
+      <li>Know who the user is</li>
+      <li>Share user profile data</li>
+    </ul>
+    <p>🧠 <strong>Example use case:</strong><br>
+    A third-party app wants to access your Google Drive files without knowing who you are—just that you’ve authorized it.</p>
+  </li>
+  <li>
+    <strong>🧾 OpenID Connect (OIDC): Adds Authentication Layer</strong><br>
+    OIDC builds on top of OAuth 2.0 and adds authentication.
+    <ol>
+      <li>✅ Who is the user?</li>
+      <li>✅ Is the user really authenticated?</li>
+      <li>✅ What is the user’s email, name, etc.?</li>
+    </ol>
+    <p>OIDC introduces a new token called the <strong>id_token</strong>.</p>
 
-
-
-🆔 2. ID Token (OpenID Connect)
-ID token is a JWT specifically designed to carry identity information about the user (like name, email, etc.).
-It is not used to access APIs, but rather to prove the user's identity to the client (such as in a login flow).
-
-🧠 OpenID Connect (OIDC) is a protocol built on top of OAuth 2.0 that introduces id_token and defines how authentication works.
-
-✅ Example Flow (Authorization Code + PKCE):
-User logs in from your frontend app.
-IdentityServer authenticates the user.
-IdentityServer returns:
-id_token to the frontend (user identity)
-access_token for calling APIs
-The frontend stores the tokens securely and uses them appropriately.
-
-OpenID Connect (OIDC) is a protocol built on top of OAuth 2.0 that introduces id_token and defines how authentication works.
-
-✅ 1. OAuth 2.0: Authorization Only
-OAuth 2.0 is a delegated authorization protocol. It allows applications (clients) to access resources on behalf of a user.
-
-But it does NOT provide any way to:
-Authenticate the user
-Know who the user is
-Share user profile data
-🧠 Example use case:
-A third-party app wants to access your Google Drive files without knowing who you are—just that you’ve authorized it.
-
-🧾 2. OpenID Connect (OIDC): Adds Authentication Layer
-OIDC builds on top of OAuth 2.0 and adds authentication.
-
-It answers:
-✅ Who is the user?
-✅ Is the user really authenticated?
-✅ What is the user’s email, name, etc.?
-OIDC introduces a new token called the id_token.
-
-This token is:
-A JWT (JSON Web Token)
-Issued after successful authentication
-Contains identity claims about the user (like sub, name, email, etc.)
-
-🔐 3. How It Works Together
-Let’s compare OAuth 2.0 and OpenID Connect through an example:
-
-Feature	OAuth 2.0	OpenID Connect
-Purpose	Authorization	Authentication + Authorization
-Main Token	access_token	id_token (plus access_token)
-Identifies User	❌ No	✅ Yes
-Returns Profile Info	❌ No	✅ Yes (via UserInfo endpoint)
-
-✅ Conclusion
-If your app just needs to call an API, only access_token is needed.
-If your app needs to know who is logged in, id_token is used.
-Both tokens are commonly issued together, but not both are required for API calls.
+    <h4>This token is:</h4>
+    <ol>
+      <li>A JWT (JSON Web Token)</li>
+      <li>Issued after successful authentication</li>
+      <li>Contains identity claims about the user (like sub, name, email, etc.)</li>
+    </ol>
+  </li>
+  <li>
+    <strong>🔐 How It Works Together</strong>
+    Let’s compare OAuth 2.0 and OpenID Connect through an example:
+    Feature	OAuth 2.0	OpenID Connect
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Purpose</th>
+      <th>Authorization</th>
+      <th>Authentication + Authorization</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Main Token</td>
+      <td><code>access_token</code></td>
+      <td><code>id_token</code> (plus <code>access_token</code>)</td>
+    </tr>
+    <tr>
+      <td>Identifies User</td>
+      <td>❌ No</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td>Returns Profile Info</td>
+      <td>❌ No</td>
+      <td>✅ Yes (via UserInfo endpoint)</td>
+    </tr>
+  </tbody>
+</table>
+  </li>
+</ol>
+<h3>✅ Conclusion</h3>
+<ol>
+  <li>If your app just needs to call an API, only <code>access_token</code> is needed.</li>
+  <li>If your app needs to know who is logged in, <code>id_token</code> is used.</li>
+  <li>Both tokens are commonly issued together, but not both are required for API calls.</li>
+</ol>
 
 ![image](https://github.com/user-attachments/assets/8ebcc38d-e0ec-4a86-861d-8e668020ba0d)
 
