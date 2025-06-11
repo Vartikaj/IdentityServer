@@ -228,6 +228,15 @@ Identity server in c#
         new IdentityResources.Profile()    // gives you name, family_name, etc.
     };
 </pre>
+
+    <h5>When a client app includes these in the scope:</h5>
+<pre>scope=openid profile</pre>
+<p>Then IdentityServer knows to include identity claims like:</p>
+<ul>
+  <li>sub (OpenId)</li>
+  <li>name, family_name, preferred_username, etc. (Profile)</li>
+</ul>
+
 <h3>✅ What it means:</h3>
 <p>This defines a client application (like an Angular app, MVC app, Postman, etc.)</p>
 <p>It tells IdentityServer:</p>
