@@ -218,7 +218,7 @@ Identity server in c#
     };
 </pre>
 
-<h3>IdentityResources</h3>
+<h3>🔑 3. IdentityResources</h3>
 <p>IdentityResources are directly related to what user information appears in the id_token (and optionally via the UserInfo endpoint). </p>
 <pre>
   public static IEnumerable<IdentityResource> IdentityResources =>
